@@ -60,3 +60,4 @@ gem 'figaro'
 gem 'bootstrap-sass', '~> 3.3.0' # bootstrap gem
 gem 'autoprefixer-rails' # bootstrap gem
 gem 'sprockets-rails', :require => 'sprockets/railtie' # bootstrap gem
+gem 'simple_form'
