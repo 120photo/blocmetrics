@@ -1,0 +1,5 @@
+<%= simple_form_for Website.new do |f| %>
+  <%= f.input :name, placeholder: "website name" %>
+  <%= f.input :url, placeholder: "URL" %>
+  <%= f.button :submit, "Add Site", class: "btn btn-primary" %>
+<% end %>

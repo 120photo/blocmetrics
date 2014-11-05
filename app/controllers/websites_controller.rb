@@ -15,6 +15,10 @@ class WebsitesController < ApplicationController
   end
 
   def create
+    @site = Website.new(params.require(:website).permit(:name, :url))
+    @site.user = current_user
+    @site.save
+    redirect_to websites_url
   end
 
   def destroy

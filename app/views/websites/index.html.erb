@@ -1,2 +1,23 @@
 <h1>Websites#index</h1>
 <p>Find me in app/views/websites/index.html.erb</p>
+
+
+
+<div class="user">
+  <p>
+    Welcome <%= current_user.email %>
+  </p>
+</div>
+
+<div class="sites">
+  <%= render partial: 'form' %>
+  <p>
+    Your Sites:<br>
+  </p>
+  <ul>
+    <% current_user.websites.each do |website| %>
+    <li><%= website.name %> | <a href="<%= website.url %>"
+      target="_blank">Visit Site</a></li>
+    <% end %>
+  </ul>
+</div>
