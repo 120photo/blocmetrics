@@ -10,7 +10,7 @@
 
   <ul class="nav nav-tabs">
     <% if current_user %>
-      <li><a href="/websites">sites</a></li>
+      <li><a href="/websites">My Websites</a></li>
       <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
     <% else %>
       <li><a href="/users/sign_in">Login</a></li>
@@ -34,7 +34,11 @@
   </div>
   <% end %>
 
+<div class="container">
+
 <%= yield %>
+
+</div>
 
 </body>
 </html>

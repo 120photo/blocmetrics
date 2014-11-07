@@ -58,10 +58,12 @@ group :test do
   gem 'capybara'
 end
 
-gem 'figaro'
-gem 'bootstrap-sass', '~> 3.3.0' # bootstrap gem
-gem 'autoprefixer-rails' # bootstrap gem
-gem 'sprockets-rails', :require => 'sprockets/railtie' # bootstrap gem
-gem 'simple_form'
-
-gem 'devise'
+gem 'autoprefixer-rails' # used by bootstrap gem
+gem 'bootstrap-sass', '~> 3.3.0' # twitter bootstrap gem
+gem 'devise' # user authentication system
+gem 'faker' # generate fake data
+gem 'figaro' # helps keep sensitive variables safe
+gem 'httparty' # downloading http files
+gem 'nokogiri' # used to parse html
+gem 'simple_form' # simplifies the process of building web forms
+gem 'sprockets-rails', :require => 'sprockets/railtie' # used by bootstrap gem

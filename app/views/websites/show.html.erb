@@ -1,2 +1,23 @@
-<h1>Websites#show</h1>
-<p>Find me in app/views/websites/show.html.erb</p>
+<h1><%= @website.name %></h1>
+<p><%= link_to @website.url, @website.url, html_options = {target: "_blank"} %></p>
+
+<%= link_to "Edit Site Info", edit_website_path, class: 'btn btn-success' %>
+<hr>
+<div id="name">
+  <% if @website.verified == false %>
+  <p>
+    <span class="glyphicon glyphicon-warning-sign"></span>
+    Place the following code in the <code>&lt;head&gt;</code> section of your site:
+  </p>
+  <p>
+    <code>&lt;meta name="blocmetrics" value="<%= @website.verification_token %>" /&gt;</code>
+  </p>
+
+  <% else %>
+  <p>
+    <span class="glyphicon glyphicon-ok"></span>
+    Verified Website
+    <span class="glyphicon glyphicon-thumbs-up"></span>
+  </p>
+  <% end %>
+</div>

@@ -16,8 +16,10 @@
   </p>
   <ul>
     <% current_user.websites.each do |website| %>
-    <li><%= website.name %> | <a href="<%= website.url %>"
-      target="_blank">Visit Site</a></li>
+      <li>
+        <%= link_to website.name, website %> | <a href="<%= website.url %>"
+        target="_blank">Visit Site</a>
+      </li>
     <% end %>
   </ul>
 </div>

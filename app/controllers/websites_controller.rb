@@ -10,9 +10,11 @@ class WebsitesController < ApplicationController
   end
 
   def show
+    @website = Website.find(params[:id])
   end
 
   def edit
+    @website = Website.find(params[:id])
   end
 
   def create
@@ -27,5 +29,13 @@ class WebsitesController < ApplicationController
   end
 
   def update
+    @website = Website.find(params[:id])
+    if @website.update_attributes(params.require(:website).permit(:name, :url))
+      flash[:notice] = "Info Modified."
+      redirect_to @website
+    else
+      flash[:error] = "Error Editing Info"
+      render :new
+    end
   end
 end

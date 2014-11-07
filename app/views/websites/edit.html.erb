@@ -1,2 +1,9 @@
 <h1>Websites#edit</h1>
 <p>Find me in app/views/websites/edit.html.erb</p>
+
+
+<%= simple_form_for @website do |f| %>
+  <%= f.input :name, placeholder: "website name" %>
+  <%= f.input :url, placeholder: "URL" %>
+  <%= f.button :submit, "Edit Site", class: "btn btn-primary" %>
+<% end %>
