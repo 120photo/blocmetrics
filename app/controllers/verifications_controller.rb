@@ -1,6 +1,5 @@
 class VerificationsController < ApplicationController
   require 'nokogiri'
-  require 'open-uri' # used by nokogiri?
   require 'HTTParty'
 
   def verify(website)
@@ -9,5 +8,6 @@ class VerificationsController < ApplicationController
     doc = Nokogiri::HTML(response)
     # use snippet below to find key
     # TODO key = doc.xpath("//meta[@name='blocmetrics']").last['content']
+    # TODO if key == website.verification_token website.verified = true
   end
 end
