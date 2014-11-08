@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root 'main#index'
 
   resources :websites
+  resources :verifications, only: [:update]
 
 end

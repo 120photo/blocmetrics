@@ -3,7 +3,11 @@
 
 
 <%= simple_form_for @website do |f| %>
+<div class="form-group">
   <%= f.input :name, placeholder: "website name" %>
+</div>
+<div class="form-group">
   <%= f.input :url, placeholder: "URL" %>
+</div>
   <%= f.button :submit, "Edit Site", class: "btn btn-primary" %>
 <% end %>

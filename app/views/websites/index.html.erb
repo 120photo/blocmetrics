@@ -1,16 +1,10 @@
-<h1>Websites#index</h1>
-<p>Find me in app/views/websites/index.html.erb</p>
+<h1>My Sites</h1>
+<p>Welcome <%= current_user.email %></p>
 
-
-
-<div class="user">
-  <p>
-    Welcome <%= current_user.email %>
-  </p>
-</div>
 
 <div class="sites">
   <%= render partial: 'form' %>
+  <hr>
   <p>
     Your Sites:<br>
   </p>

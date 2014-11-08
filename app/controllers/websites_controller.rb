@@ -22,6 +22,7 @@ class WebsitesController < ApplicationController
     @site.user = current_user
     @site.verification_token = SecureRandom.hex(12)
     @site.save
+    flash[:error] = "Sorry, someone is already claiming that site"
     redirect_to websites_url
   end
 
@@ -38,4 +39,6 @@ class WebsitesController < ApplicationController
       render :new
     end
   end
+
+
 end
