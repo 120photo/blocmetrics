@@ -1,4 +1,4 @@
-class VerificationsController < ApplicationController
+class VerificationController < ApplicationController
   require 'nokogiri'
   require 'HTTParty'
 
@@ -16,19 +16,16 @@ class VerificationsController < ApplicationController
 
   private
 
-  # def verify_ownership(website)
-  #   # website = Website.find(params[:id])
-  #   website.verified = true
-  #   website.save
-  # end
-
   def verify(website)
     @website = website.id
     response = HTTParty.get(website.url)
     doc = Nokogiri::HTML(response)
     # use snippet below to find key
-    # TODO key = doc.xpath("//meta[@name='blocmetrics']").last['content']
-    # TODO if key == website.verification_token website.verified = true
+    key = doc.xpath("//meta[@name='blocmetrics']").last['content']
+    if key == @website.verification_token
+      @website.verified = true
+      @website.save
+    end
   end
 
 end

@@ -22,7 +22,11 @@ class WebsitesController < ApplicationController
     @site.user = current_user
     @site.verification_token = SecureRandom.hex(12)
     @site.save
-    flash[:error] = "Sorry, someone is already claiming that site"
+    if @site.save
+      flash[:notice] = "Site Added"
+    else
+      flash[:error] = "Sorry, someone is already claiming that site"
+    end
     redirect_to websites_url
   end
 
