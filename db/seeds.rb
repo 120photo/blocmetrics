@@ -5,12 +5,19 @@ require 'SecureRandom'
 admin = User.new(
   name: 'Jose',
   email: 'admin@example.com',
-  password: 'password'
+  password: 'Password'
 )
 admin.save
 
+second_user = User.new(
+  name: 'Tux',
+  email: 'tux@example.com',
+  password: 'Password'
+)
+second_user.save
+
 # create some users
-4.times do
+3.times do
   user = User.new(
     name: Faker::Name.name,
     email: Faker::Internet.safe_email,
