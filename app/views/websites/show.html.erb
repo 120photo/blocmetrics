@@ -15,7 +15,7 @@
     <code>&lt;meta name="blocmetrics" value="<%= @website.verification_token %>" /&gt;</code>
   </p>
   <p>
-    <%#= link_to "Verify", :controller => "verifications#update" %>
+    <%= link_to "Verify", verification_url(@website), method: :put %>
   </p>
 
   <% else %>
