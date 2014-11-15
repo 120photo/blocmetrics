@@ -1,6 +1,6 @@
 class WebsitesController < ApplicationController
   before_filter :authenticate_user!
-  require 'SecureRandom'
+  require 'securerandom'
 
   def index
     @websites = current_user.websites.all

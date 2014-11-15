@@ -1,5 +1,5 @@
 require 'faker'
-require 'SecureRandom'
+require 'securerandom'
 
 # setup admin account
 admin = User.new(
