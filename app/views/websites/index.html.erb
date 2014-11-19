@@ -5,16 +5,36 @@
 <div class="sites">
   <%= render partial: 'form' %>
   <hr>
+
+  <% if current_user %>
+    <%#= current_user.api_token %>
+    <%= link_to "Generate API Key", api_keys_url(), method: :create %>
+  <% else %>
+    <p>
+      <%= link_to "Generate API Key", api_keys_url, method: :create %>
+    </p>
+  <% end %>
+  <hr>
   <p>
-    Your Sites:<br>
+    <b>Your Sites:</b><br>
   </p>
-  <ul>
+  <table class="table table-striped table-hover">
+    <tr class="info">
+    <th>Website</th>
+    <th>Visit URL</th>
+    <th>Verification Status</th>
+    </tr>
     <% current_user.websites.each do |website| %>
-      <li>
-        <%= link_to website.name, website %> | <a href="<%= website.url %>"
-        target="_blank">Visit Site</a>
-        <% if website.verified? %><span class="glyphicon glyphicon-ok"></span><% end %>
-      </li>
+    <tr>
+      <td><em><%= link_to website.name, website %></em></td>
+
+      <td><a href="<%= website.url %>"
+        target="_blank">Visit Site</a></td>
+
+      <td><% if website.verified? %><span class="glyphicon glyphicon-ok green-icon"></span>
+          <% else %> <span class="glyphicon glyphicon-remove red-icon"></span>
+          <% end %></td>
+    </tr>
     <% end %>
-  </ul>
+  </table>
 </div>

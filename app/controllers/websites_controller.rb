@@ -4,6 +4,10 @@ class WebsitesController < ApplicationController
 
   def index
     @websites = current_user.websites.all
+    respond_to do |format|
+      format.html
+      format.json { render :json => @websites }
+    end
   end
 
   def new
@@ -31,6 +35,16 @@ class WebsitesController < ApplicationController
   end
 
   def destroy
+    @website = Website.find(params[:id])
+    name = @website.name
+
+    if @website.destroy
+      flash[:notice] = "#{name} removed"
+      redirect_to websites_url
+    else
+      flash[:error] = "There was an error, try again."
+      redirect_to websites_url
+    end
   end
 
   def update

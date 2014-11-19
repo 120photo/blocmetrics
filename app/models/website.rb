@@ -4,7 +4,6 @@ class Website < ActiveRecord::Base
   validates :url, uniqueness: true
 
   def verify!
-    # @website = website.id
     begin
       response = HTTParty.get(self.url)
       doc = Nokogiri::HTML(response)

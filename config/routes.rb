@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :websites
   resources :verifications, only: [:update]
+  resources :api_keys, only: [:create]
 
   namespace :api do
     namespace :v1 do

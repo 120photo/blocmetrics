@@ -58,6 +58,7 @@ group :test do
   gem 'capybara'
 end
 
+gem 'active_model_serializers'
 gem 'autoprefixer-rails' # used by bootstrap gem
 gem 'bootstrap-sass', '~> 3.3.0' # twitter bootstrap gem
 gem 'devise' # user authentication system

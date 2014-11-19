@@ -4,6 +4,7 @@
 <p><%= link_to @website.url, @website.url, html_options = {target: "_blank"} %></p>
 
 <%= link_to "Edit Site Info", edit_website_path, class: 'btn btn-success' %>
+<%= link_to "Delete Record", @website, method: :delete, class: 'btn btn-danger', data: { confirm: 'Delete this site record?' } %>
 <hr>
 <div id="name">
   <% if @website.verified == false %>

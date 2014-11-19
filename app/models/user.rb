@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :websites
   has_many :events
+  has_one :api_key
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
