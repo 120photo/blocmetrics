@@ -7,6 +7,7 @@ class WebsitesController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render :json => @websites }
+      format.xml { render :xml => @websites }
     end
   end
 
