@@ -5,16 +5,6 @@
 <div class="sites">
   <%= render partial: 'form' %>
   <hr>
-
-  <% if current_user %>
-    <%#= current_user.api_token %>
-    <%= link_to "Generate API Key", api_keys_url(), method: :create %>
-  <% else %>
-    <p>
-      <%= link_to "Generate API Key", api_keys_url, method: :create %>
-    </p>
-  <% end %>
-  <hr>
   <p>
     <b>Your Sites:</b><br>
   </p>
