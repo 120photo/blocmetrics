@@ -68,3 +68,5 @@ gem 'httparty' # downloading http files
 gem 'nokogiri' # used to parse html
 gem 'simple_form' # simplifies the process of building web forms
 gem 'sprockets-rails', :require => 'sprockets/railtie' # used by bootstrap gem
+gem 'sidekiq'
+gem 'sinatra'

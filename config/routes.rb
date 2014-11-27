@@ -12,4 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
+  require 'sidekiq/web' # sidekiq monitoring app
+  mount Sidekiq::Web => '/sidekiq' # sidekiq monitoring app
+
 end
