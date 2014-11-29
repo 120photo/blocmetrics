@@ -8,12 +8,14 @@
 </head>
 <body>
 
-  <ul class="nav nav-tabs">
-    <% if current_user %>
+  <% if current_user %>
+  <nav class="nav navbar-default navbar-inverse" role="navigation">
+    <ul class="nav navbar-nav">
       <li><a href="/websites">My Websites</a></li>
       <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-    <% end %>
-  </ul>
+    </ul>
+  </nav>
+  <% end %>
 
   <% if flash[:notice] %>
   <div class="alert alert-success">
