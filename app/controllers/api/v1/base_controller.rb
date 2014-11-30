@@ -2,11 +2,11 @@ class Api::V1::BaseController < ApplicationController
 
   respond_to :json
 
-  skip_before_filter :verify_authenticity_token
-
-  before_filter :authenticate_user_from_token!
-  # This is Devise's authentication
-  before_filter :authenticate_user!
+  # skip_before_filter :verify_authenticity_token
+  #
+  # before_filter :authenticate_user_from_token!
+  # # This is Devise's authentication
+  # before_filter :authenticate_user!
 
   before_filter :cors_preflight_check
   after_filter :cors_set_headers
