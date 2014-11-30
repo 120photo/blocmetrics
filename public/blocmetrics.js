@@ -8,7 +8,7 @@ var Blocmetrics = {
     }
 
     var _bm_request = new XMLHttpRequest();
-    _bm_request.open("POST", "https://joemetrics.herokuapp.com/events.json", true);
+    _bm_request.open("POST", "https://joemetrics.herokuapp.com/api/v1/events.json", true);
     _bm_request.setRequestHeader('Content-Type', 'application/json');
     _bm_request.onreadystatechange = function() {
       // this function runs when the Ajax request changes state.
