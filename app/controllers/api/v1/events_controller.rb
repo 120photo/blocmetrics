@@ -2,9 +2,9 @@ class Api::V1::EventsController < Api::V1::BaseController
 
   def create
 
-    user = User.find_by(authentication_key: params[:key])
+    user = User.find_by(authentication_key: params[:auth_token])
 
-    if User.find_by(authentication_key: params[:key])
+    if user
       @event = Event.new
       @event.name = params[:name]
       @event.data = params[:data]
