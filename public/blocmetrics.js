@@ -3,6 +3,7 @@
 var Blocmetrics = {
   track: function(api_key, event_name, event_data) {
     var _bm_event = {
+      key: api_key,
       name: event_name,
       data: event_data
     }

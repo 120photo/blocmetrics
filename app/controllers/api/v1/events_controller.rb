@@ -1,14 +1,22 @@
 class Api::V1::EventsController < Api::V1::BaseController
 
-
   def create
 
-    #EventWorker.perform_async(key, event_name, event_data)
+    user = User.find_by(authentication_key: params[:key])
 
-    @guest_ip = request.env["REMOTE_ADDR"]
-    # @guest_host = request.env["REMOTE_HOST"] # will show domain
-    @guest_agent = request.env["HTTP_USER_AGENT"]
-    @page_visited = request.env["REQUEST_URI"]
+    if User.find_by(authentication_key: params[:key])
+      @event = Event.new
+      @event.name = params[:name]
+      @event.data = params[:data]
+      @event.user = user
+      @event.ip = request.env["REMOTE_ADDR"]
+      @event.host = request.env["REMOTE_HOST"]
+      @event.agent = request.env["HTTP_USER_AGENT"]
+      @event.uri = request.env["REQUEST_URI"]
+      @event.save
+    end
+
+    #EventWorker.perform_async(params)
 
     # Create a worker that creates an event for the domain that submitted the request
 

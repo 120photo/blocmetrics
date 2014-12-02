@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122160532) do
+ActiveRecord::Schema.define(version: 20141202074908) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
@@ -33,6 +33,11 @@ ActiveRecord::Schema.define(version: 20141122160532) do
     t.integer  "website_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ip"
+    t.string   "host"
+    t.string   "agent"
+    t.string   "uri"
+    t.string   "data"
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id"

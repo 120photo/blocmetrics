@@ -4,7 +4,7 @@ class Api::V1::BaseController < ApplicationController
 
   skip_before_filter :verify_authenticity_token
   #
-  # before_filter :authenticate_user_from_token!
+  before_filter :authenticate_user_from_token!
   # # This is Devise's authentication
   # before_filter :authenticate_user!
 
