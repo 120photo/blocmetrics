@@ -1,22 +1,21 @@
 class Api::V1::EventsController < Api::V1::BaseController
+  require 'uri'
 
   def create
 
-    user = User.find_by(authentication_key: params[:auth_token])
-
-    if user
+    if current_user
       @event = Event.new
       @event.name = params[:name]
       @event.data = params[:data]
       @event.user = user
       @event.ip = request.env["REMOTE_ADDR"]
-      @event.host = request.env["REMOTE_HOST"]
-      @event.agent = request.env["HTTP_USER_AGENT"]
-      @event.uri = request.env["REQUEST_URI"]
+      # @event.host = request.env["REMOTE_HOST"]
+      #               request.referer
+      @event.agent = request.user_agent
+      @event.uri = URI.parse(request.referer).host
       @event.save
     end
-
-    #EventWorker.perform_async(params)
+    # EventWorker.perform_async(user_id, event_name, event_Data)
 
     # Create a worker that creates an event for the domain that submitted the request
 

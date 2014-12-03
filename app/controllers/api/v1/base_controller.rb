@@ -3,33 +3,30 @@ class Api::V1::BaseController < ApplicationController
   respond_to :json
 
   skip_before_filter :verify_authenticity_token
-  #
+
   before_filter :authenticate_user_from_token!
-  # # This is Devise's authentication
-  # before_filter :authenticate_user!
+  before_filter :authenticate_user!
 
   before_filter :cors_preflight_check
-  after_filter :cors_set_headers
-
+  after_filter :set_headers
 
   private
 
   def authenticate_user_from_token!
-    user_token = params[:auth_token].presence
-    user       = user_token && User.where(authentication_key: user_token).first
+    auth_token = params[:auth_token]
+    user = User.where(authentication_key: auth_token).first
+    # user = auth_token &&
 
-    # Notice how we use Devise.secure_compare to compare the token
-    # in the database with the token given in the params, mitigating
-    # timing attacks.
-    if user
+    # logger.info user.inspect
+
+    if user && Devise.secure_compare(user.authentication_key, params[:auth_token])
       sign_in user, store: false
+    else
+      render nothing: true, status: :unauthorized
     end
   end
 
-
-  private
-
-  def cors_set_headers
+  def set_headers
     headers['Access-Control-Allow-Origin'] = '*'
     headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
     headers['Access-Control-Allow-Headers'] = 'Content-Type'
