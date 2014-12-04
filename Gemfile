@@ -51,6 +51,7 @@ group :development do
  gem 'binding_of_caller'
  gem 'better_errors'
  gem 'did_you_mean'
+ gem 'rake', '~> 10.4.2'
 end
 
 group :test do

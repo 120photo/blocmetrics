@@ -7,12 +7,12 @@ class Api::V1::EventsController < Api::V1::BaseController
       @event = Event.new
       @event.name = params[:name]
       @event.data = params[:data]
-      @event.user = user
+      @event.user = current_user
       @event.ip = request.env["REMOTE_ADDR"]
       # @event.host = request.env["REMOTE_HOST"]
       #               request.referer
       @event.agent = request.user_agent
-      @event.uri = URI.parse(request.referer).host
+      # @event.uri = URI.parse(request.referer).host
       @event.save
     end
     # EventWorker.perform_async(user_id, event_name, event_Data)

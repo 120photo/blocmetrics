@@ -13,13 +13,12 @@ class Api::V1::BaseController < ApplicationController
   private
 
   def authenticate_user_from_token!
-    auth_token = params[:auth_token]
-    user = User.where(authentication_key: auth_token).first
-    # user = auth_token &&
+    token = params[:auth_token].presence
+    user = User.where(authentication_key: token).first
 
-    # logger.info user.inspect
+    logger.info user.inspect
 
-    if user && Devise.secure_compare(user.authentication_key, params[:auth_token])
+    if user && Devise.secure_compare(user.authentication_key, token)
       sign_in user, store: false
     else
       render nothing: true, status: :unauthorized
@@ -39,7 +38,7 @@ class Api::V1::BaseController < ApplicationController
       headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
       headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version'
       headers['Access-Control-Max-Age'] = '1728000'
-      render :text => '', :content_type => 'text/plain' # needed to send back POST and GET options
+      render :text => '', :content_type => 'text/plain'
     end
   end
 
