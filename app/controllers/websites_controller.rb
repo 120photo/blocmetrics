@@ -1,6 +1,7 @@
 class WebsitesController < ApplicationController
   before_filter :authenticate_user!
   require 'securerandom'
+  require 'uri'
 
   def index
     @websites = current_user.websites.all
@@ -26,6 +27,7 @@ class WebsitesController < ApplicationController
     @site = Website.new(params.require(:website).permit(:name, :url))
     @site.user = current_user
     @site.verification_token = SecureRandom.hex(12)
+    @site.uri = URI.parse(@site.url).host
     @site.save
     if @site.save
       flash[:notice] = "Site Added"

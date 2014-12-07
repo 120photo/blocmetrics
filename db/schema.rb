@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202074908) do
+ActiveRecord::Schema.define(version: 20141207183542) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20141202074908) do
     t.datetime "updated_at"
     t.string   "verification_token"
     t.boolean  "verified",           default: false
+    t.string   "uri"
   end
 
   add_index "websites", ["user_id"], name: "index_websites_on_user_id"

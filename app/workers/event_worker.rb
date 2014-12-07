@@ -4,7 +4,7 @@ class EventWorker
 
   def perform(user, event_name, event_data, event_ip, event_agent, event_uri)
 
-    if Website.where(url: event_uri).where(verified: true)
+    if Website.where(url: event_uri).verified?
       @event = Event.new
       @event.user = user
       @event.name = event_name
