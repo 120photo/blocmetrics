@@ -3,11 +3,12 @@ class Api::V1::EventsController < Api::V1::BaseController
 
   def create
 
-    host = URI.parse(request.referer).host
+    host = URI.parse(request.referer).host # http://www.cnn.com => www.cnn.com
 
-    if current_user #&& Website.where(url: host).verified?
+    if current_user
       EventWorker.perform_async(
-        current_user, params[:name],
+        current_user.id,
+        params[:name],
         params[:data],
         request.env["REMOTE_ADDR"],
         request.user_agent,
@@ -15,7 +16,7 @@ class Api::V1::EventsController < Api::V1::BaseController
       )
     end
 
-    # Important. if the worker find out that this is an unauthorized request. it won't create the event.
     render nothing: true, status: :created
+
   end
 end
