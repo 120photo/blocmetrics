@@ -3,7 +3,7 @@ class Api::V1::EventsController < Api::V1::BaseController
 
   def create
 
-    host = URI.parse(request.referer).host # http://www.cnn.com => www.cnn.com
+    host = current_user.get_domain(request.referer)
 
     if current_user
       EventWorker.new.perform(

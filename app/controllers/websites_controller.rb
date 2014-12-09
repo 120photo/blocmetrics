@@ -27,7 +27,7 @@ class WebsitesController < ApplicationController
     @site = Website.new(params.require(:website).permit(:name, :url))
     @site.user = current_user
     @site.verification_token = SecureRandom.hex(12)
-    @site.uri = URI.parse(@site.url).host
+    @site.uri = current_user.get_domain(@site.url)
     @site.save
     if @site.save
       flash[:notice] = "Site Added"
