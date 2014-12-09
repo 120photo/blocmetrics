@@ -6,7 +6,7 @@ class Api::V1::EventsController < Api::V1::BaseController
     host = URI.parse(request.referer).host # http://www.cnn.com => www.cnn.com
 
     if current_user
-      EventWorker.perform_async(
+      EventWorker.new.perform(
         current_user.id,
         params[:name],
         params[:data],
