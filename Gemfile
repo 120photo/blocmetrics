@@ -62,6 +62,7 @@ end
 gem 'active_model_serializers'
 gem 'autoprefixer-rails' # used by bootstrap gem
 gem 'bootstrap-sass', '~> 3.3.0' # twitter bootstrap gem
+gem 'chartjs-rails' # Installs Chart.js
 gem 'devise' # user authentication system
 gem 'faker' # generate fake data
 gem 'figaro' # helps keep sensitive variables safe
