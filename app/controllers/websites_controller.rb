@@ -17,6 +17,7 @@ class WebsitesController < ApplicationController
 
   def show
     @website = Website.find(params[:id])
+    @events = @website.events
   end
 
   def edit
