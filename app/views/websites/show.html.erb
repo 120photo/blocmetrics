@@ -21,7 +21,6 @@
 
   <% else %>
   <p>
-    <span class="glyphicon glyphicon-ok"></span>
     Verified Website
     <span class="glyphicon glyphicon-thumbs-up"></span>
   </p>
@@ -43,6 +42,7 @@
   <% end %>
 </ul>
 
+<% if @website.verified? %>
 <table class="table table-striped table-hover">
 <tr class="info">
 <th>Event</th>
@@ -57,3 +57,4 @@
 </tr>
 <% end %>
 </table>
+<% end %>
