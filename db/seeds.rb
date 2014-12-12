@@ -40,6 +40,6 @@ users = User.all
   site.save
 end
 
-puts "Finished Seeding Data"
+puts 'Finished Seeding Data'
 puts "#{User.count} users creates"
 puts "#{Website.count} websites generated"

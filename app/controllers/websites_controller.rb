@@ -7,8 +7,8 @@ class WebsitesController < ApplicationController
     @websites = current_user.websites.all
     respond_to do |format|
       format.html
-      format.json { render :json => @websites }
-      format.xml { render :xml => @websites }
+      format.json { render json: @websites }
+      format.xml { render xml: @websites }
     end
   end
 
@@ -31,9 +31,9 @@ class WebsitesController < ApplicationController
     @site.uri = current_user.get_domain(@site.url)
     @site.save
     if @site.save
-      flash[:notice] = "Site Added"
+      flash[:notice] = 'Site Added'
     else
-      flash[:error] = "Sorry, someone is already claiming that site"
+      flash[:error] = 'Sorry, someone is already claiming that site'
     end
     redirect_to websites_url
   end
@@ -46,7 +46,7 @@ class WebsitesController < ApplicationController
       flash[:notice] = "#{name} removed"
       redirect_to websites_url
     else
-      flash[:error] = "There was an error, try again."
+      flash[:error] = 'There was an error, try again.'
       redirect_to websites_url
     end
   end
@@ -54,10 +54,10 @@ class WebsitesController < ApplicationController
   def update
     @website = Website.find(params[:id])
     if @website.update_attributes(params.require(:website).permit(:name, :url))
-      flash[:notice] = "Info Modified."
+      flash[:notice] = 'Info Modified.'
       redirect_to @website
     else
-      flash[:error] = "Error Editing Info"
+      flash[:error] = 'Error Editing Info'
       render :new
     end
   end

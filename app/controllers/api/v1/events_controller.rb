@@ -6,7 +6,7 @@ class Api::V1::EventsController < Api::V1::BaseController
     host = current_user.get_domain(request.referer)
 
     if current_user
-      EventWorker.new.perform(
+      EventWorker.perform_async(
         current_user.id,
         params[:name],
         params[:data],

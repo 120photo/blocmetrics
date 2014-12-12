@@ -19,10 +19,10 @@ class Api::V1::BaseController < ApplicationController
 
       # logger.info user.inspect
 
-      if user #&& Devise.secure_compare(user.authentication_key, token)
+      if user
         sign_in user, store: false
       else
-        render json: {error: "Unauthorized"},status: :unauthorized and return
+        render json: { error: 'Unauthorized' }, status: :unauthorized && return
       end
     end
   end
@@ -41,7 +41,7 @@ class Api::V1::BaseController < ApplicationController
     headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
     headers['Access-Control-Allow-Headers'] = 'Access-Control-Allow-Origin, X-Requested-With, X-Prototype-Version, Content-Type'
     headers['Access-Control-Max-Age'] = '1728000'
-    render text: "" if request.method == "OPTIONS"
+    render text: '' if request.method == 'OPTIONS'
   end
 
 end
